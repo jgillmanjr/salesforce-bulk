@@ -4,13 +4,18 @@ from __future__ import absolute_import
 import os
 from collections import namedtuple
 from httplib2 import Http
-import requests
-import urllib2
-import urlparse
+
+try:
+    import urlparse
+    import StringIO
+except ImportError:
+    # Python 3
+    from urllib import parse as urlparse
+    from io import StringIO
+    
 import requests
 import xml.etree.ElementTree as ET
 from tempfile import TemporaryFile, NamedTemporaryFile
-import StringIO
 import re
 import time
 import csv
